@@ -1,5 +1,9 @@
 ## Java 8 Spring Boot Maven API using Clean Architecture  
 
+#### Project Update  
+
+Added an Angular 8 Web UI project to access .Net API.  
+
 This solution consists of a Java 8 Spring Boot Maven Api developed using Clean Architecture principles. The solution contains the Api, Infrastructure, Core, and Tests.
 
 Clean Architecture in this example is obtained through the implementation of the following:  
