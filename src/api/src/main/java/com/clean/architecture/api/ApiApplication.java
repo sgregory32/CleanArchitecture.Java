@@ -22,7 +22,10 @@ public class ApiApplication {
 
 	@Value("${environmentName}")
 	protected String environmentNameProperty;
-
+	
+	@Value("${corsDomain}")
+	protected String corsDomainProperty;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);
 	}
@@ -30,12 +33,13 @@ public class ApiApplication {
 	@PostConstruct
 	public void postConstruct() {
 		logger.info(environmentLogMessage(environmentNameProperty));
+		ApiApplicationProperties.setCorsDomain(corsDomainProperty);
 	}
 
 	protected String environmentLogMessage(String environmentName) throws IllegalArgumentException {
-		String msg = "\n\n**** Starting ApiApplication Service in " + environmentName.toUpperCase().trim()
-				+ " environment mode. (Using application-" + environmentName.toLowerCase().trim()
-				+ ".properties file.) ****\n";
+		String msg = "\n\n****  Starting ApiApplication Service in " + environmentNameProperty.toUpperCase().trim()
+				+ " environment mode. (Using application-" + environmentNameProperty.toLowerCase().trim()
+				+ ".properties file.)  ****\n";
 		return msg;
 	}
 }

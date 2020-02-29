@@ -2,8 +2,6 @@ package com.clean.architecture.api.controllers;
 
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,11 +16,10 @@ import com.clean.architecture.api.models.CategoryProductDTO;
 import com.clean.architecture.api.services.CategoryService;
 
 @RestController
-@RequestMapping(value = {"/categories"}, produces = "application/json;charset=UTF-8")
+@RequestMapping(value = {"api/categories"}, produces = "application/json;charset=UTF-8")
 public class CategoryController {
-
+	
 	private final CategoryService categoryService;
-	final static Logger logger = LogManager.getLogger(CategoryController.class);
 
 	@Autowired	
 	public CategoryController(CategoryService categoryService) {

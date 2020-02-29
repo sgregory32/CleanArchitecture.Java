@@ -17,7 +17,7 @@ import com.clean.architecture.api.models.ProductCategoryDTO;
 import com.clean.architecture.api.services.ProductService;
 
 @RestController
-@RequestMapping(value = {"/products"}, produces = "application/json;charset=UTF-8")
+@RequestMapping(value = {"api/products"}, produces = "application/json;charset=UTF-8")
 public class ProductController {
 	
 	private final ProductService productService;

@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.clean.architecture.api.models.ProductCategoryDTO;
+import com.clean.architecture.api.models.ProductDTO;
 import com.clean.architecture.api.utilities.JsonUtilities;
 import com.clean.architecture.core.entities.Product;
 import com.clean.architecture.core.interfaces.IGenericService;
@@ -75,7 +76,7 @@ public class ProductService implements IGenericService<ProductCategoryDTO> {
 			
 		try {
 			//Check if product exists
-			productRepository.getOne(gson.fromJson(jsonString, Product.class).getId());
+			productRepository.getOne(gson.fromJson(jsonString, ProductDTO.class).getId());
 			productRepository.saveAndFlush(gson.fromJson(jsonString, Product.class));
 		} catch (Exception ex) {
 			logger.error("An HTTP 404 error occurred: " + ex.getMessage());

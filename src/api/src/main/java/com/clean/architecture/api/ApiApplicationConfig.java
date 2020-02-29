@@ -1,8 +1,11 @@
 package com.clean.architecture.api;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.clean.architecture.filters.CorsFilter;
 
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -28,4 +31,12 @@ public class ApiApplicationConfig {
           .paths(PathSelectors.any())                          
           .build();                                           
     }	
+    
+    @Bean
+    public FilterRegistrationBean<CorsFilter> filterRegistrationBean(){
+        FilterRegistrationBean<CorsFilter> registrationBean = new FilterRegistrationBean<>();
+        registrationBean.setFilter(new CorsFilter());
+        registrationBean.addUrlPatterns("/*");
+        return registrationBean;    
+    }
 }
