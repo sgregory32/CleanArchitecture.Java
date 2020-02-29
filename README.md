@@ -33,7 +33,7 @@ From the diagram above, the api & infrastructure projects depend on the core pro
 
 ## Prerequisites
 
-Angular 8 with Bootstrap 4.4.1
+Angular 8 with Bootstrap 4.4.1  
 Gson  
 H2  
 Hibernate  
