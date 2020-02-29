@@ -26,7 +26,7 @@ public class ProductControllerFunctionalTests {
 	@Autowired
 	private TestRestTemplate restTemplate;
 	
-	private static final String API_URL  =  "/products";
+	private static final String API_URL  =  "/api/products";
 	private static final Gson gson = new Gson();
 	
     @Test

@@ -26,7 +26,7 @@ public class CategoryControllerFunctionalTests {
 	@Autowired
 	private TestRestTemplate restTemplate;
 	
-	private static final String API_URL  =  "/categories";
+	private static final String API_URL  =  "/api/categories";
 	private static final Gson gson = new Gson();
 	
 //    @Test
