@@ -35,17 +35,6 @@ public class CorsFilter implements Filter {
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
 		
 		HttpServletRequest request = (HttpServletRequest) servletRequest;
-//		String localHost = servletRequest.getProtocol().substring(0,4).toLowerCase() + "://" + servletRequest.getServerName() + ":" + servletRequest.getServerPort();
-//		String remoteHost = request.getProtocol().substring(0,4).toLowerCase() + "://" + request.getServerName() + ":" + request.getServerPort();
-//		String[] arrOrigins = ApiApplicationProperties.getCorsDomainWhiteList().split(" ");
-//		String corsDomain = null;
-//		for (String origin : arrOrigins) {
-//			if(origin == remoteHost) {
-//				corsDomain = origin;
-//				break;
-//			}
-//		}
-		
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
 		
 		addHeaders(response);
