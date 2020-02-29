@@ -23,14 +23,16 @@ Clean Architecture in this example is obtained through the implementation of the
 ![Clean Architecture Diagram](clean_architecture.png)  
 Clean Architecture Diagram
 
-From the diagram above, all projects depend on the core project; all dependencies point inward to this core. Inner projects define interfaces, outer projects implement the interfaces. None of the projects reference outward-positioned projects - inward references only.
+From the diagram above, the api & infrastrucure projects depend on the core project; all dependencies point inward to the core project. Inner projects define interfaces, outer projects implement the interfaces. None of the projects reference outward-positioned projects - inward references only. The Angular web project does not depend on other projects in this solution. It is a seperate project which hits the REST endpoints in the Java Api project. The Java Api runs seperatly as a Springboot microservice. The Angular project runs seperately on Node.js.
 
-1.) The Api project has references to the Infrastructure and Core projects.  
-2.) The Infrastructure project only references the Core project.  
-3.) The Core project has no other project references.  
+1.) The Angular UI project (not pictured below) calls the Java Api project REST endpoints.
+2.) The Api project has references to the Infrastructure and Core projects.  
+3.) The Infrastructure project only references the Core project.  
+4.) The Core project has no other project references.  
 
 ## Prerequisites
 
+Angular 8 with Bootstrap 4.4.1
 Gson  
 H2  
 Hibernate  
@@ -67,7 +69,7 @@ There are two types of tests included in the solution. These tests use an in-mem
 
 ## Disclaimer
 
-This solution is provided as a simple implementation of clean architecture using Java/Spring/Maven. It is not meant to be used in any environment other than a development environment for learning purposes. By downloading, cloning, or any other means of implementing this solution, you agree to indemnify the author of all liability resulting from the use of this code.
+This solution is provided as a simple implementation of clean architecture using Java/Spring/Maven & Angular. It is not meant to be used in any environment other than a development environment for learning purposes. By downloading, cloning, or any other means of implementing this solution, you agree to indemnify the author of all liability resulting from the use of this code.
 
 ## Author
 
