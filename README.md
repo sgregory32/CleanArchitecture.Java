@@ -16,6 +16,7 @@ Clean Architecture in this example is obtained through the implementation of the
 
 ## Project Structure  
 
+* The Web project contains the Angular web user interface.
 * The Api project contains the REST endpoints, services, log files, DTO models, & configuration.  
 * The Infrastructure project contains the JPA repository extensions.  
 * The Core project contains the business domain entities, and JPA repository interface.  
@@ -23,7 +24,7 @@ Clean Architecture in this example is obtained through the implementation of the
 ![Clean Architecture Diagram](clean_architecture.png)  
 Clean Architecture Diagram
 
-From the diagram above, the api & infrastrucure projects depend on the core project; all dependencies point inward to the core project. Inner projects define interfaces, outer projects implement the interfaces. None of the projects reference outward-positioned projects - inward references only. The Angular web project does not depend on other projects in this solution. It is a seperate project which hits the REST endpoints in the Java Api project. The Java Api runs seperatly as a Springboot microservice. The Angular project runs seperately on Node.js.
+From the diagram above, the api & infrastructure projects depend on the core project; all dependencies point inward to the core project. Inner projects define interfaces, outer projects implement the interfaces. None of the projects reference outward-positioned projects - inward references only. The Angular web project does not depend on other projects in this solution. It is a seperate project which hits the REST endpoints in the Java Api project. The Java Api runs as a Spring Boot microservice. The Angular project runs seperately from the Api.
 
 1.) The Angular UI project (not pictured below) calls the Java Api project REST endpoints.
 2.) The Api project has references to the Infrastructure and Core projects.  
