@@ -6,9 +6,9 @@ Added Angular 8 Web UI project to access .Net API.
 
 <img src="AngularJS_google.png" alt="Angular logo" width="160" height="89">  
 
-This solution consists of a Java 8 Spring Boot Maven Api developed using Clean Architecture principles. The solution contains the Api, Infrastructure, Core, and Tests.
+This solution consists of an Angular Web UI and a Java 8 Spring Boot/Maven Api developed using Clean Architecture principles. The Api project also contains Api JUnit tests.
 
-Clean Architecture in this example is obtained through the implementation of the following:  
+Clean Architecture in this example is obtained through the implementation of SOLID design principles:  
 
 * Separation of Concerns/Single Responsibility: Api, Infrastructure (Data Access), Core(Domain Models, service & repository interfaces)
 * Dependency Inversion Principle: All concrete class packages connect only through abstractions (interface or abstract class packages ) 
