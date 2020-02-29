@@ -2,7 +2,7 @@
 
 #### Project Update  
 
-Added an Angular 8 Web UI project to access .Net API.  ![AngularJS Logo](AngularJS_google.png)  
+Added an Angular 8 Web UI project to access .Net API.  ![AngularJS Logo](AngularJS_google.png =160x89)  
 
 This solution consists of a Java 8 Spring Boot Maven Api developed using Clean Architecture principles. The solution contains the Api, Infrastructure, Core, and Tests.
 
