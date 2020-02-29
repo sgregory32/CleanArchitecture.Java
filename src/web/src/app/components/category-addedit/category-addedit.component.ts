@@ -31,7 +31,7 @@ export class CategoryAddEditComponent implements OnInit {
         categoryId: 0,
         name: ['', [Validators.required]]
       }
-    )
+    );
   }
 
   ngOnInit() {

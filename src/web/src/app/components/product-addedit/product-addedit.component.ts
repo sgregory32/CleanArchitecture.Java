@@ -42,7 +42,7 @@ export class ProductAddEditComponent implements OnInit {
         description: ['', [Validators.required]],
         categoryId: ['', [Validators.required]]
       }
-    )
+    );
   }
 
   ngOnInit() {
