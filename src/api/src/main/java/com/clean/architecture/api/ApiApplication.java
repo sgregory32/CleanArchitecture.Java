@@ -38,8 +38,7 @@ public class ApiApplication {
 
 	protected String environmentLogMessage(String environmentName) throws IllegalArgumentException {
 		String msg = "\n\n****  Starting ApiApplication Service in " + environmentNameProperty.toUpperCase().trim()
-				+ " environment mode. (Using application-" + environmentNameProperty.toLowerCase().trim()
-				+ ".properties file.)  ****\n";
+				+ " environment mode.  ****\n";
 		return msg;
 	}
 }
