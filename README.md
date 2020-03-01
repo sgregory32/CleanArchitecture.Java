@@ -28,7 +28,7 @@ Clean Architecture Diagram
 
 From the diagram above, the api & infrastructure projects depend on the core project; all dependencies point inward to the core project. Inner projects define interfaces, outer projects implement the interfaces. None of the projects reference outward-positioned projects - inward references only. The Angular web project does not depend on other projects in this solution. It is a seperate project which hits the REST endpoints in the Java Api project. The Java Api runs as a Spring Boot microservice. The Angular project runs seperately from the Api.
 
-1.) The Angular UI project (not pictured above) hits the Java Api project REST endpoints.  
+1.) The Angular UI project (not pictured above; would be outer-most layer) hits the Java Api project REST endpoints.  
 2.) The Api project has references to the Infrastructure and Core projects.  
 3.) The Infrastructure project only references the Core project.  
 4.) The Core project has no other project references.  
