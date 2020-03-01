@@ -8,11 +8,11 @@ Added Angular 8 Web UI project to access .Net API.
 
 This solution consists of an Angular Web UI and Java 8 API including tests developed using Clean Architecture principles. The solution contains the Web, API, Infrastructure, Core, and Test projects. The Infrastructure project utilizes Hibernate ORM with a Repository pattern for data access using JPA. Logging is implemented using Apache Log4j2.
 
-Swagger has also been implemented but in order to view the Swagger endpoints, a database needs to be created & connection strings in the API project Spring "application.properties" file will need to be modified to reflect your database environment. The SQL scripts to create the database tables are included in the "docs" folder.  
+Swagger has also been implemented but in order to view the Swagger endpoints, a database needs to be created & connection strings in the API project Spring "application.properties" file will need to be modified to reflect your database environment. The SQL scripts to create the database tables are included in the *"docs"* folder.  
 
 Clean Architecture in this example is obtained through the implementation of SOLID design principles:  
 
-* Separation of Concerns/Single Responsibility: Api, Infrastructure (Data Access), Core(Domain Models, service & repository interfaces)
+* Separation of Concerns/Single Responsibility: Api, Infrastructure (Data Access), Core(Domain models, service & repository interfaces)
 * Dependency Inversion Principle: All concrete class packages connect only through abstractions (interface or abstract class packages ) 
 * Explicit Dependencies Principle: All dependencies requested via constructor (except Serilog)  
 
@@ -35,28 +35,32 @@ From the diagram above, the api & infrastructure projects depend on the core pro
 
 ## Prerequisites
 
-Angular 8 with Bootstrap 4.4.1  
-Gson  
-H2  
-Hibernate  
-Jpa (Java Persistence Api)  
-ModelMapper   
-Log4j2  
+Angular (8) with Bootstrap (4.4.1)   
+Gson (2.8.6)    
+H2 (1.4.2)  
+Hibernate (5.4.9.Final)
+Java (jre1.8.0_231)  
+JUnit (4.12)      
+ModelMapper (2.3.6)
+Spring Boot (2.2.2) 
+Spring Boot Starter JPA (2.2.2)        
+Spring Boot Starter Log4j2 (2.2.2) 
+Swagger (2.9.2)     
 
 ## Installing
 
 1.) Clone or download the project  
 2.) Open the solution in Eclipse, or IntelliJ  
-3.) [Optional] If you have access to an MSSQL server, create a database called "OptBot"  
-4.) [Optional] Run the commands in the CREATE Tables script.txt file in the "docs" folder  
+3.) [Optional] If you have access to an MSSQL server, create a database called *"OptBot"*  
+4.) [Optional] Run the commands in the CREATE Tables script.txt file in the *"docs"* folder  
 5.) [Optional] Modify the solution connection strings to reflect your MSSQL environment  
 6.) Build the solution  
-7.) Run the solution  
-8.) The Swagger implementation can be veiwed at: [host url]/swagger-ui.html
+7.) Run the Java Api project then run the Angular Web project
+8.) The Swagger implementation can be veiwed at: *[host url]/swagger-ui.html*
 
 ## Running the tests
 
-To run all of the Api solution tests, right-click the "com.clean.architecture.api.tests" package >>> "Run as JUnit Test"
+To run all of the Api solution tests, right-click the *"com.clean.architecture.api.tests"* package >>> "Run as JUnit Test"
 
 ## Test Composition
 
@@ -64,6 +68,8 @@ There are two types of tests included in the solution. These tests use an in-mem
 
 1.) Repository Integration Tests: Tests the implementations of Jpa data repositories.  
 2.) Functional Tests: Tests the Api REST controllers.  
+
+*TODO: Move tests to their respective projects.*  
 
 ## Built With
 
@@ -76,4 +82,5 @@ This solution is provided as a simple implementation of clean architecture using
 
 ## Author
 
-* **Skip Gregory** - https://github.com/sgregory32
+* **George Gregory** - https://github.com/sgregory32
+
