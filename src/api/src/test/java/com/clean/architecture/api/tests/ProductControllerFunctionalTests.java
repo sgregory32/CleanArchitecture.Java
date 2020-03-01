@@ -19,9 +19,6 @@ import com.google.gson.Gson;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ProductControllerFunctionalTests {
-	
-	@LocalServerPort
-	private int port;
 
 	@Autowired
 	private TestRestTemplate restTemplate;
