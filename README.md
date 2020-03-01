@@ -6,9 +6,9 @@ Added Angular 8 Web UI project to access .Net API.
 
 <img src="AngularJS_google.png" alt="Angular logo" width="160" height="89">  
 
-This solution consists of an Angular Web UI and Java 8 API including tests developed using Clean Architecture principles. The solution contains the Web, API, Infrastructure, Core, and Test projects. The Infrastructure project utilizes Hibernate ORM with a Repository pattern for data access using JPA. Logging is implemented using Apache Log4j2.
+This solution consists of an Angular Web UI and Java 8 API including tests developed using Clean Architecture principles. The solution contains the Web, Api, Infrastructure, Core, and Test projects. The Infrastructure project utilizes Hibernate ORM with a Repository pattern for data access using JPA. Logging is implemented using Apache Log4j2.
 
-Swagger has also been implemented but in order to view the Swagger endpoints, a database needs to be created & connection strings in the API project Spring "application.properties" file will need to be modified to reflect your database environment. The SQL scripts to create the database tables are included in the *"docs"* folder.  
+Swagger has also been implemented but in order to view the Swagger endpoints, a database needs to be created & connection strings in the API project Spring *"application.properties"* file will need to be modified to reflect your database environment. The SQL scripts to create the database tables are included in the *"docs"* folder.  
 
 Clean Architecture in this example is obtained through the implementation of SOLID design principles:  
 
@@ -19,16 +19,16 @@ Clean Architecture in this example is obtained through the implementation of SOL
 ## Project Structure  
 
 * The Web project contains the Angular web user interface.
-* The Api project contains the REST endpoints, services, log files, DTO models, & configuration.  
+* The Api project contains the REST endpoints, services, log files, CORS filter, DTO models, & configuration.  
 * The Infrastructure project contains the JPA repository extensions.  
-* The Core project contains the business domain entities, and JPA repository interface.  
+* The Core project contains the business domain entities, exception objects, and JPA repository interface.  
 
 ![Clean Architecture Diagram](clean_architecture.png)  
 Clean Architecture Diagram
 
 From the diagram above, the api & infrastructure projects depend on the core project; all dependencies point inward to the core project. Inner projects define interfaces, outer projects implement the interfaces. None of the projects reference outward-positioned projects - inward references only. The Angular web project does not depend on other projects in this solution. It is a seperate project which hits the REST endpoints in the Java Api project. The Java Api runs as a Spring Boot microservice. The Angular project runs seperately from the Api.
 
-1.) The Angular UI project (not pictured below) calls the Java Api project REST endpoints.  
+1.) The Angular UI project (not pictured above) hits the Java Api project REST endpoints.  
 2.) The Api project has references to the Infrastructure and Core projects.  
 3.) The Infrastructure project only references the Core project.  
 4.) The Core project has no other project references.  
