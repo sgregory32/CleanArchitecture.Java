@@ -8,7 +8,7 @@ Added Angular 8 Web UI project to access .Net API.
 
 This solution consists of an Angular Web UI and Java 8 API including tests developed using Clean Architecture principles. The solution contains the Web, Api, Infrastructure, Core, and Test projects. The Infrastructure project utilizes Hibernate ORM with a Repository pattern for data access using JPA. Logging is implemented using Apache Log4j2.
 
-Swagger has also been implemented but in order to view the Swagger endpoints, a database needs to be created & connection strings in the API project Spring *"application.properties"* file will need to be modified to reflect your database environment. The SQL scripts to create the database tables are included in the *"docs"* folder.  
+Swagger has also been implemented. To view the Swagger endpoints, jump to *[host url:port]/swagger-ui.html* Also, the SQL scripts to create the database tables are included in the *"docs"* folder.  
 
 Clean Architecture in this example is obtained through the implementation of SOLID design principles:  
 
