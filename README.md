@@ -47,20 +47,22 @@ Spring Boot Starter JPA (2.2.2)
 Spring Boot Starter Log4j2 (2.2.2)   
 Swagger (2.9.2)     
 
-## Installing
+## Installing & running Api project locally
 
 1.) Clone or download the project  
-2.) Open the solution in Eclipse, or IntelliJ  
-3.) [Optional] If you have access to an MSSQL server, create a database called *"OptBot"*  
-4.) [Optional] Run the commands in the CREATE Tables script.txt file in the *"docs"* folder  
-5.) [Optional] Modify the solution connection strings to reflect your MSSQL environment  
-6.) Build the solution  
-7.) Run the Java Api project then run the Angular Web project
-8.) The Swagger implementation can be veiwed at: *[host url]/swagger-ui.html*
+2.) Open the solution in Eclipse
+3.) Clean & build the solution  
+4.) Run the Java Api project then run the Angular Web project
+5.) The Swagger implementation can be veiwed at: *[host url]/swagger-ui.html*  
+
+## Running the Angular project locally  
+
+1.) With the Api project running locally right-click on the Angular *web* project click "Run As* >>> *Angular Web Application*  
+2.) A browser window will open to the Angular UI  
 
 ## Running the tests
 
-To run all of the Api solution tests, right-click the *"com.clean.architecture.api.tests"* package >>> "Run as JUnit Test"
+To run all of the Api solution tests, right-click the *"com.clean.architecture.api.tests"* package >>> *Run as JUnit Test*
 
 ## Test Composition
 
@@ -69,12 +71,14 @@ There are two types of tests included in the solution. These tests use an in-mem
 1.) Repository Integration Tests: Tests the implementations of Jpa data repositories.  
 2.) Functional Tests: Tests the Api REST controllers.  
 
-*TODO: Move tests to their respective projects.*  
-
 ## Built With
 
 * Eclipse STS 4.5
-* MSSQL Server 2017
+* MSSQL Server 2017  
+
+## Demo Link  
+
+https://cleanarchitecturewebapp.azurewebsites.net/  (.Net version)
 
 ## Disclaimer
 
@@ -82,5 +86,5 @@ This solution is provided as a simple implementation of clean architecture using
 
 ## Author
 
-* **George Gregory** - https://github.com/sgregory32
+* **Skip Gregory** - https://github.com/sgregory32
 
