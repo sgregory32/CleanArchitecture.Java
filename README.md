@@ -57,7 +57,7 @@ Swagger (2.9.2)
 
 ## Running the Angular project locally  
 
-1.) With the Api project running locally right-click on the Angular *web* project click "Run As* >>> *Angular Web Application*  
+1.) With the Api project running locally, right-click on the Angular *web* project click "Run As* >>> *Angular Web Application*  
 2.) A browser window will open to the Angular UI  
 
 ## Running the tests
@@ -78,7 +78,7 @@ There are two types of tests included in the solution. These tests use an in-mem
 
 ## Demo Link  
 
-https://cleanarchitecturewebapp.azurewebsites.net/  (.Net version)
+<a href="https://cleanarchitecturewebapp.azurewebsites.net/" target=blank>https://cleanarchitecturewebapp.azurewebsites.net/</a>  (.Net version)
 
 ## Disclaimer
 
