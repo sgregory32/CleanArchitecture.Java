@@ -78,7 +78,7 @@ There are two types of tests included in the solution. These tests use an in-mem
 
 ## Demo Link  
 
-<a href="https://cleanarchitecturewebapp.azurewebsites.net/" target=blank>https://cleanarchitecturewebapp.azurewebsites.net/</a>  (.Net version)
+<a href="https://cleanarchitecturewebapp.azurewebsites.net/" target="_blank">https://cleanarchitecturewebapp.azurewebsites.net/</a>  (.Net version)
 
 ## Disclaimer
 
