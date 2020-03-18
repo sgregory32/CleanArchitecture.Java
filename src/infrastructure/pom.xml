@@ -7,10 +7,14 @@
 		<groupId>com.clean.architecture</groupId>
 		<artifactId>parent-pom</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath />
 	</parent>
 
+	<properties>
+		<project.version>0.0.1-SNAPSHOT</project.version>
+	</properties>
+
 	<artifactId>infrastructure</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<dependencies>
 		<dependency>
