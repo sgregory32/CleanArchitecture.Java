@@ -1,16 +1,11 @@
 package com.clean.architecture.api.tests;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -23,9 +18,6 @@ import com.google.gson.Gson;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class CategoryControllerFunctionalTests {
-	
-//	@LocalServerPort
-//	private int port;
 
 	@Autowired
 	private TestRestTemplate restTemplate;
