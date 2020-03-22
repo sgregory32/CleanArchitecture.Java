@@ -1,6 +1,6 @@
 package com.clean.architecture.api.tests;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +17,7 @@ import com.clean.architecture.api.models.ProductDTO;
 import com.google.gson.Gson;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class ProductControllerFunctionalTests {
+class ProductControllerFunctionalTests {
 
 	@Autowired
 	private TestRestTemplate restTemplate;
@@ -28,31 +28,31 @@ public class ProductControllerFunctionalTests {
     @Test
     public void getProduct_Returns_OK() {
    	 ResponseEntity<ProductDTO> response = this.restTemplate.getForEntity(API_URL + "/1",	ProductDTO.class);
-   	 Assertions.assertEquals(response.getStatusCodeValue(), HttpStatus.OK.value());
-   	 Assertions.assertEquals(response.getBody().getId().longValue(), 1L);
-   	 Assertions.assertEquals(response.getBody().getName(), "Product1");
+   	 assertEquals(response.getStatusCodeValue(), HttpStatus.OK.value());
+   	 assertEquals(response.getBody().getId().longValue(), 1L);
+   	 assertEquals(response.getBody().getName(), "Product1");
     }
     
     @Test
     public void getProducts_Returns_OK() {
    	 	ResponseEntity<ProductDTO[]> response = this.restTemplate.getForEntity(API_URL, ProductDTO[].class);
-   	 	Assertions.assertEquals(response.getStatusCodeValue(),  HttpStatus.OK.value());
-   	 	Assertions.assertEquals(response.getBody()[0].getId().longValue(), 1L);
-   	 	Assertions.assertEquals(response.getBody()[0].getName(), "Product1");
-   	 	Assertions.assertEquals(response.getBody()[1].getId().longValue(), 2L);
-   	 	Assertions.assertEquals(response.getBody()[1].getName(), "Product2");
+   	 	assertEquals(response.getStatusCodeValue(),  HttpStatus.OK.value());
+   	 	assertEquals(response.getBody()[0].getId().longValue(), 1L);
+   	 	assertEquals(response.getBody()[0].getName(), "Product1");
+   	 	assertEquals(response.getBody()[1].getId().longValue(), 2L);
+   	 	assertEquals(response.getBody()[1].getName(), "Product2");
     }
 	
 	@Test
 	public void getProduct_Returns_NOT_FOUND() {
 		ResponseEntity<String> response = restTemplate.getForEntity(API_URL + "/-1", String.class);
-		Assertions.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
+		assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
 	}
 	
 	@Test
 	public void getProduct_Returns_BAD_REQUEST() {
 		ResponseEntity<String> response = restTemplate.getForEntity(API_URL + "/a", String.class);
-		Assertions.assertEquals(response.getStatusCode(), HttpStatus.BAD_REQUEST);
+		assertEquals(response.getStatusCode(), HttpStatus.BAD_REQUEST);
 	}
     
     @Test
@@ -69,7 +69,7 @@ public class ProductControllerFunctionalTests {
     	
     	ResponseEntity<String> response = restTemplate.postForEntity(API_URL, entity, String.class);
     	
-    	Assertions.assertEquals(response.getStatusCode(), HttpStatus.CREATED);
+    	assertEquals(response.getStatusCode(), HttpStatus.CREATED);
     }
     
     @Test
@@ -85,13 +85,13 @@ public class ProductControllerFunctionalTests {
     	HttpEntity<String> entity = new HttpEntity<String>(json, headers);
     	ResponseEntity<String> response = restTemplate.exchange(API_URL + "/3", HttpMethod.PUT, entity, String.class);
 
-    	Assertions.assertEquals(response.getStatusCode(), HttpStatus.NO_CONTENT);    	
+    	assertEquals(response.getStatusCode(), HttpStatus.NO_CONTENT);    	
     }
     
     @Test
     public void deleteProduct_Returns_NO_CONTENT() {
     	ResponseEntity<String> response = restTemplate.exchange(API_URL + "/5", HttpMethod.DELETE, null, String.class);
-    	Assertions.assertEquals(response.getStatusCode(), HttpStatus.NO_CONTENT);
+    	assertEquals(response.getStatusCode(), HttpStatus.NO_CONTENT);
     }
     
 	private HttpHeaders addHttpHeader() {
@@ -100,4 +100,3 @@ public class ProductControllerFunctionalTests {
 		return headers;
 	}
 }
-
