@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -23,32 +22,8 @@ class ProductRepositoryIntegrationTests {
 	@Autowired
 	ProductRepository repository;
 	
-	private Product product1 = new Product();
-	private Product product2 = new Product();
-	private Product product3 = new Product();
-	private Product product4 = new Product();
-	
-	@BeforeEach
-	void seedData() {
-
-		product1.setId(1L);
-		product1.setName("Product1 Name");
-		product1.setDescription("Product1 Description");
-		Category category1 = new Category();
-		category1.setId(1L);
-		category1.setName("Category1");
-		product1.setCategory(category1);
-		repository.save(product1);
-		
-		product2.setId(2L);
-		product2.setName("Product2 Name");
-		product2.setDescription("Product2 Description");
-		Category category2 = new Category();
-		category2.setId(2L);
-		category2.setName("Category2");
-		product2.setCategory(category2);
-		repository.save(product2);
-	}
+	private Product product1 = TestHelper.getProduct1ComparisonData();
+	private Product product2 = TestHelper.getProduct2ComparisonData();
 	
     @Test
     public void contextNotNull() {
@@ -59,24 +34,37 @@ class ProductRepositoryIntegrationTests {
 	void findByIdProduct() {
 		
 		Optional<Product> result = repository.findById(1L);
-		assertEquals(result.get().getId().longValue(), 1L);
-		assertEquals(result.get().getName(), product1.getName());
-		assertEquals(result.get().getDescription(), product1.getDescription());
-		assertEquals(result.get().getCategory().getId().longValue(), product1.getCategory().getId());
+		
+		assertEquals(product1.getId().longValue(), result.get().getId().longValue());
+		assertEquals(product1.getName(), result.get().getName());
+		assertEquals(product1.getDescription(), result.get().getDescription());
+		assertEquals(product1.getCategory().getId().longValue(), result.get().getCategory().getId().longValue());
+	}
+	
+	@Test
+	void getOneProduct() {
+		
+		long productId = 1L;
+		Product result = repository.getOne(productId);
+		
+		assertEquals(product1.getId().longValue(), result.getId().longValue());
+		assertEquals(product1.getName(), result.getName());
+		assertEquals(product1.getDescription(), result.getDescription());
+		assertEquals(product1.getCategory().getId().longValue(), result.getCategory().getId().longValue());
 	}
 	
 	@Test
 	void findAllProducts() {
 		
 		List<Product> result = repository.findAll(Sort.by(Sort.Direction.ASC, "Id"));
-		assertEquals(result.get(0).getId().longValue(), product1.getId());
-		assertEquals(result.get(0).getName(), product1.getName());
-		assertEquals(result.get(0).getDescription(), product1.getDescription());
-		assertEquals(result.get(0).getCategory().getId().longValue(), product1.getCategory().getId());
-		assertEquals(result.get(1).getId().longValue(), product2.getId());
-		assertEquals(result.get(1).getName(), product2.getName());
-		assertEquals(result.get(1).getDescription(), product2.getDescription());
-		assertEquals(result.get(1).getCategory().getId().longValue(), product2.getCategory().getId());
+		assertEquals(product1.getId(), result.get(0).getId().longValue());
+		assertEquals(product1.getName(), result.get(0).getName());
+		assertEquals(product1.getDescription(), result.get(0).getDescription());
+		assertEquals(product1.getCategory().getId(), result.get(0).getCategory().getId().longValue());
+		assertEquals(product2.getId(), result.get(1).getId().longValue());
+		assertEquals(product2.getName(), result.get(1).getName());
+		assertEquals(product2.getDescription(), result.get(1).getDescription());
+		assertEquals(product2.getCategory().getId(), result.get(1).getCategory().getId().longValue());
 	}
 	
 	@Test
@@ -89,42 +77,45 @@ class ProductRepositoryIntegrationTests {
 		category.setId(1L);
 		product.setCategory(category);
 		
-		Product savedProduct = repository.saveAndFlush(product);
+		Product result = repository.saveAndFlush(product);
 		
-		assertTrue(savedProduct.getId().longValue() > 0);
-		assertEquals(savedProduct.getName(), product.getName());
-		assertEquals(savedProduct.getDescription(), product.getDescription());
-		assertEquals(savedProduct.getCategory().getId(), product.getCategory().getId());
+		assertTrue(result.getId().longValue() > 0);
+		assertEquals(product.getName(), result.getName());
+		assertEquals(product.getDescription(), result.getDescription());
+		assertEquals(product.getCategory().getId(), result.getCategory().getId());
 	}
 	
 	@Test
 	void updateProduct() {
 		
-		product3.setName("Product Update Name");
-		product3.setDescription("Product Update Description");
+		long productId = 3L;
+		
+		Product product = repository.getOne(productId);	
+		product.setName("Product Update Name");
+		product.setDescription("Product Update Description");
 		
 		Category category = new Category();
 		category.setId(1L);
 		category.setName("Category Update");
-		product3.setCategory(category);
+		product.setCategory(category);
 		
-		Product updatedProduct = repository.saveAndFlush(product3);
+		Product result = repository.saveAndFlush(product);
 		
-		assertEquals(updatedProduct.getId().longValue(), product3.getId().longValue());
-		assertEquals(updatedProduct.getName(), product3.getName());
-		assertEquals(updatedProduct.getDescription(), product3.getDescription());
-		assertEquals(updatedProduct.getCategory().getId(), product3.getCategory().getId());
+		assertEquals(product.getId().longValue(), result.getId().longValue());
+		assertEquals(product.getName(), result.getName());
+		assertEquals(product.getDescription(), result.getDescription());
+		assertEquals(product.getCategory().getId(), result.getCategory().getId());
 	}
 	
 	@Test
 	void deleteProduct() {
 		
-		long productId = 2L;	
+		long productId = 4L;	
 		Product product = repository.getOne(productId);
-		assertEquals(product.getId().longValue(), productId);
+		assertEquals(productId, product.getId().longValue());
 		
 		repository.delete(product);
 		
-		assertEquals(repository.findById(productId), Optional.empty());
+		assertEquals(Optional.empty(), repository.findById(productId));
 	}
 }

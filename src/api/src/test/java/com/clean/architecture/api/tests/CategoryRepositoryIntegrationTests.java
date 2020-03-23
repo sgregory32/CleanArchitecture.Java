@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -21,20 +20,8 @@ class CategoryRepositoryIntegrationTests {
 	@Autowired
 	CategoryRepository repository;
 	
-	Category category1 = new Category();
-	Category category2 = new Category();
-	
-	@BeforeEach
-	void seedData() {
-
-		category1.setId(1L);
-		category1.setName("Category1");
-		repository.save(category1);
-		
-		category2.setId(2L);
-		category2.setName("Category2");
-		repository.save(category2);
-	}
+	Category category1 = TestHelper.getCategory1ComparisonData();
+	Category category2 = TestHelper.getCategory2ComparisonData();
 	
     @Test
     public void contextNotNull() {
@@ -45,18 +32,27 @@ class CategoryRepositoryIntegrationTests {
 	void findByIdCategory() {
 		
 		Optional<Category> result = repository.findById(1L);
-		assertEquals(result.get().getId().longValue(), 1L);
-		assertEquals(result.get().getName(), "Category1");
+		assertEquals(category1.getId().longValue(), result.get().getId().longValue());
+		assertEquals(category1.getName(), result.get().getName());
+	}
+	
+	@Test
+	void getOneCategory() {
+		
+		long categoryId = 1L;
+		Category result = repository.getOne(categoryId);
+		assertEquals(category1.getId().longValue(), result.getId().longValue());
+		assertEquals(category1.getName(), result.getName());
 	}
 	
 	@Test
 	void findAllCategories() {
 		
 		List<Category> categories = repository.findAll();
-		assertEquals(categories.get(0).getId().longValue(), 1L);
-		assertEquals(categories.get(0).getName(), "Category1");
-		assertEquals(categories.get(1).getId().longValue(), 2L);
-		assertEquals(categories.get(1).getName(), "Category2");		
+		assertEquals(category1.getId().longValue(), categories.get(0).getId().longValue());
+		assertEquals(category1.getName(), categories.get(0).getName());
+		assertEquals(category2.getId().longValue(), categories.get(1).getId().longValue());
+		assertEquals(category2.getName(), categories.get(1).getName());		
 	}
 	
 	@Test
@@ -67,33 +63,33 @@ class CategoryRepositoryIntegrationTests {
 		Category savedCategory = repository.saveAndFlush(category);
 		
 		assertTrue(savedCategory.getId().longValue() > 0);
-		assertEquals(savedCategory.getName(), category.getName());
+		assertEquals(category.getName(), savedCategory.getName());
 	}
 	
 	@Test
 	void updateCategory() {
 		
-		long categoryId = 1L;
+		long categoryId = 3L;
 		Category category = repository.getOne(categoryId);
 		assertEquals(category.getId().longValue(), categoryId);
 		
 		category.setName("Category Update Name");
 		Category updatedCategory = repository.saveAndFlush(category);
 		
-		assertEquals(updatedCategory.getId().longValue(), category.getId().longValue());
-		assertEquals(updatedCategory.getName(), category.getName());
+		assertEquals(category.getId().longValue(), updatedCategory.getId().longValue());
+		assertEquals(category.getName(), updatedCategory.getName());
 	}
 	
 	@Test
 	void deleteCategory() {
 
-		long categoryId = 2L;
+		long categoryId = 4L;
 		Category category = repository.getOne(categoryId);
-		assertEquals(category.getId().longValue(), categoryId);
+		assertEquals(categoryId, category.getId().longValue());
 		
 		repository.delete(category);
 		
-		assertEquals(repository.findById(categoryId), Optional.empty());
+		assertEquals(Optional.empty(), repository.findById(categoryId));
 	}
 }
 
