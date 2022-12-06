@@ -76,15 +76,11 @@ There are two types of tests included in the solution. These tests use an in-mem
 * Eclipse STS 4.5
 * MSSQL Server 2017  
 
-## Demo Link  
-
-<a href="https://cleanarchitecturewebapp.azurewebsites.net/" target="_blank">https://cleanarchitecturewebapp.azurewebsites.net/</a>  (.Net version)
-
 ## Disclaimer
 
 This solution is provided as a simple implementation of clean architecture using Java/Spring/Maven & Angular. It is not meant to be used in any environment other than a development environment for learning purposes. By downloading, cloning, or any other means of implementing this solution, you agree to indemnify the author of all liability resulting from the use of this code.
 
 ## Author
 
-* **Skip Gregory** - https://github.com/sgregory32
+* **George Gregory** - https://github.com/sgregory32
 
